@@ -28,6 +28,7 @@ class Algorithm(object):
     @classmethod
     def make_implementation(cls, collective, topology, instance, steps):
         chunked = collective.chunk_up(instance.chunks)
+        # print(f'instance.chunks: {instance.chunks}')
 
         # Figure out input and output addresses
         input_map = {}
@@ -48,6 +49,7 @@ class Algorithm(object):
                 output_map[rank] = output_addrs
 
         # Concatenate collective and topology names plus instance arguments to create a name
+        # print(f'instance: {instance}')
         name = f'{collective.name}-{topology.name}-{instance}'
 
         algo = cls(name, collective, topology, instance, steps, input_map, output_map)

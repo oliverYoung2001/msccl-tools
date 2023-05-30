@@ -6,22 +6,45 @@ from .topology import Topology
 from fractions import Fraction
 import subprocess
 
+def dgx1_half():
+    links = [                       # topo on zoltan
+        #0  1  2  3  4  5  6  7
+        [0, 1, 2, 1],
+        [1, 0, 1, 2],
+        [2, 1, 0, 2],
+        [1, 2, 2, 0],
+    ]
+
+    return Topology('DGX1_HALF', links)
+    
 def dgx1():
     # (0 1 2 3) (4 5 6 7) are two sockets
     # 0 1 3 2 is the high bandwidth chain in socket 1
     # 4 5 7 6 is the high bandwidth chain in socket 2
     # 0 4 and 2 6 are high bandwidth intersocket links  
 
-    links = [
+    # links = [
+    #     #0  1  2  3  4  5  6  7
+    #     [0, 2, 1, 1, 2, 0, 0, 0],
+    #     [2, 0, 1, 2, 0, 1, 0, 0],
+    #     [1, 1, 0, 2, 0, 0, 2, 0],
+    #     [1, 2, 2, 0, 0, 0, 0, 1],
+    #     [2, 0, 0, 0, 0, 2, 1, 1],
+    #     [0, 1, 0, 0, 2, 0, 1, 2],
+    #     [0, 0, 2, 0, 1, 1, 0, 2],
+    #     [0, 0, 0, 1, 1, 2, 2, 0]
+    # ]
+    
+    links = [                       # topo on zoltan
         #0  1  2  3  4  5  6  7
-        [0, 2, 1, 1, 2, 0, 0, 0],
-        [2, 0, 1, 2, 0, 1, 0, 0],
-        [1, 1, 0, 2, 0, 0, 2, 0],
-        [1, 2, 2, 0, 0, 0, 0, 1],
-        [2, 0, 0, 0, 0, 2, 1, 1],
-        [0, 1, 0, 0, 2, 0, 1, 2],
-        [0, 0, 2, 0, 1, 1, 0, 2],
-        [0, 0, 0, 1, 1, 2, 2, 0]
+        [0, 1, 2, 1, 0, 0, 0, 2],
+        [1, 0, 1, 2, 0, 0, 2, 0],
+        [2, 1, 0, 2, 0, 1, 0, 0],
+        [1, 2, 2, 0, 1, 0, 0, 0],
+        [0, 0, 0, 1, 0, 2, 2, 1],
+        [0, 0, 1, 0, 2, 0, 1, 2],
+        [0, 2, 0, 0, 2, 1, 0, 1],
+        [2, 0, 0, 0, 1, 2, 1, 0],
     ]
 
     # self.symmetries = [

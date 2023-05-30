@@ -20,6 +20,7 @@ class KnownTopologies:
             'AMD4': self._fixed_topo(topologies.amd4),
             'AMD8': self._fixed_topo(topologies.amd8),
             'DGX1': self._fixed_topo(topologies.dgx1),
+            'DGX1_HALF': self._fixed_topo(topologies.dgx1_half),
             'DGX2': self._fixed_topo(lambda: topologies.hub_and_spoke(16)),
             'NVLinkOnly': self._fixed_topo(topologies.nvlink_only),
             'custom': self._custom_topo(),

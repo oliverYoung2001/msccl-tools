@@ -27,8 +27,12 @@ def _make_handle_strategy(cmd_parsers, name, invoke, take_steps = True):
 
         validate_output_args(args)
         topology = topologies.create(args)
+        # print(f'args: {args}')
+        # print(f'topology.links: {topology.links}')
         collective = collectives.create(args, topology.num_nodes())
+        # print(f'collective.chunks(): {collective.chunks()}')
         instance = instance_handler(args)
+        # print(f'instance: {instance.__dict__}')
         algo = invoke(args, topology, collective, instance)
         output_handler(args, algo)
         return True

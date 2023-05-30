@@ -61,6 +61,7 @@ def wrap_try_ncd_reduction(solver_cls):
 
         def solve(self, instance):
             algo = super().solve(instance)
+            # print(f'self.dual: {self.dual}')
             if self.dual != None and algo != None:
                 return recover_primal_algorithm(algo, self.primal, self.original_topology, instance)
             else:

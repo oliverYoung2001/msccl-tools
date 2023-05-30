@@ -113,6 +113,7 @@ class PathEncodingBase(object):
                             for overlapping_step in range(step, instance.steps, instance.steps - overlap):
                                 sends_by_addr[(collective.address(chunk))].append(_sent_in(chunk, src, dst, overlapping_step))
                         # Count sends happening on an address only once and give each of these weight 1
+                        # print(f'sends: {sends_by_addr.values()}')
                         pb_sends.extend([(Or(sends),1) for sends in sends_by_addr.values()])
                 # For each number of rounds this step could have impose a pseudo-boolean
                 # constraint limiting sends on this step to the available bandwidth

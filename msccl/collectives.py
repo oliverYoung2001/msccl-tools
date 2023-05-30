@@ -74,8 +74,11 @@ def build_collective(name, num_nodes, num_chunks, precondition, postcondition, a
         chunk_precondition = set(rank for rank in range(num_nodes) if precondition(rank, chunk))
         chunk_postcondition = set(rank for rank in range(num_nodes) if postcondition(rank, chunk))
         chunk_address = address(chunk)
+        # print(f'chunk_address: {chunk_address}, chunk: {chunk}')
+        # print(f'chunk: {chunk}, chunk_precondition: {chunk_precondition}, chunk_postcondition: {chunk_postcondition}')
         chunks.append(Chunk(chunk_precondition, chunk_postcondition, chunk_address))
     triggers = {(rank, chunk): trigger(rank, chunk) for rank in range(num_nodes) for chunk in range(num_chunks) if trigger(rank, chunk) != None}
+    # print(f'triggers: {triggers}')  # Empty
     return Collective(name, num_nodes, chunks, triggers, runtime_name)
 
 # Common pre- and postconditions

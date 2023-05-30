@@ -23,9 +23,9 @@ def _solve_and_log(encoding, instance, logging):
     if logging:
         if result != None:
             print(f'synthesized! ({duration:.1f}s)')
+            print(f'{result}')
         else:
             print(f'unsatisfiable. ({duration:.1f}s)')
-
     return result
 
 def solve_instance(topology, collective, instance, logging = False):
